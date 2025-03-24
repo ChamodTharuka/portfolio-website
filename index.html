@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <title>dinith.me - Portfolio</title>  
+    <link rel="stylesheet" href="css/theme.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .base-template__wrapper {
+            max-width: 1560px;
+        }
+        
+        .base-template__text {
+            margin-bottom: 60px;
+        }
+        
+        /**
+         * Slider Instance
+         */
+        
+        .swiper {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+                 user-select: none;
+        }
+        
+        .emotions-slider {
+            --color-gray: #818181;
+            --color-gray-dark: #1e1e1e;
+        
+            padding-inline: 98px;
+            position: relative;
+        }
+        
+        .emotions-slider__slide {
+            display: flex;
+            align-items: center;
+            min-height: 550px;
+        }
+        
+        @media screen and (max-width: 767.9px) {
+            .emotions-slider {
+                padding: 0;
+                margin-inline: -20px;
+            }
+        }
+        
+        /**
+         * Slider Navigation
+         */
+        
+        .slider-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            translate: 0 -50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .slider-nav__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            width: 48px;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+        
+        .slider-nav__item.disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+        
+        .slider-nav__item path {
+            stroke: currentColor;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            .slider-nav__item:not(.disabled):hover {
+                color: var(--color-blue);
+            }
+        }
+        
+        @media (hover: none) {
+            .slider-nav__item:not(.disabled):active {
+                color: var(--color-blue);
+            }
+        }
+        
+        @media screen and (max-width: 767.9px) {
+            .slider-nav {
+                display: none;
+            }
+        }
+        
+        /**
+         * Slider Pagination
+         */
+        
+        .slider-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 40px;
+        }
+        
+        .swiper-pagination-lock {
+            display: none !important;
+        }
+        
+        .slider-pagination__item {
+            width: 8px;
+            height: 8px;
+            border-radius: 99px;
+            background: #fff;
+            transition: all 0.3s ease-out;
+            opacity: 0.2;
+        }
+        
+        .slider-pagination__item.active {
+            width: 30px;
+            opacity: 1;
+        }
+        
+        /**
+         * Slider Item
+         */
+        
+        .swiper-slide {
+            width: auto;
+            height: auto;
+        }
+        
+        @-webkit-keyframes btn-arrow-move {
+            0% {
+                translate: 0;
+            }
+        
+            100% {
+                translate: 100% -100%;
+            }
+        }
+        
+        @keyframes btn-arrow-move {
+            0% {
+                translate: 0;
+            }
+        
+            100% {
+                translate: 100% -100%;
+            }
+        }
+        
+        .emotions-slider-item {
+            --border-radius: 10px;
+        
+            width: calc(100dvw - 60px);
+            max-width: 400px;
+            background: var(--color-gray-dark);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emotions-slider-item__badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px 4px 5px;
+            background: #00000066;
+            border-bottom-right-radius: var(--border-radius);
+            font-size: 14px;
+            line-height: calc(24 / 14);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .emotions-slider-item__badge::before {
+            content: "";
+            flex-shrink: 0;
+            display: block;
+            aspect-ratio: 1;
+            width: 18px;
+            background: url("https://bato-web-agency.github.io/bato-shared/img/slider-1/icon-star.svg")
+                center center no-repeat;
+            background-size: 100%;
+        }
+        
+        .emotions-slider-item__image {
+            aspect-ratio: 400 / 270;
+            overflow: hidden;
+        }
+        
+        .emotions-slider-item__image img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+               object-fit: cover;
+            -o-object-position: center;
+               object-position: center;
+        }
+        
+        .emotions-slider-item__content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 30px 20px;
+        }
+        
+        .emotions-slider-item__header,
+        .emotions-slider-item__footer {
+            max-height: 50px;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in;
+        }
+        
+        .emotions-slider-item__header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .emotions-slider-item__price {
+            font-weight: 600;
+            font-size: 22px;
+            line-height: calc(24 / 22);
+        }
+        
+        .emotions-slider-item__author {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .emotions-slider-item__author-image {
+            flex-shrink: 0;
+            aspect-ratio: 1;
+            width: 20px;
+            border-radius: 100%;
+            overflow: hidden;
+        }
+        
+        .emotions-slider-item__author-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+               object-fit: cover;
+            -o-object-position: center;
+               object-position: center;
+        }
+        
+        .emotions-slider-item__author-name {
+            font-family: var(--font-poppins);
+            font-size: 14px;
+            line-height: calc(20 / 14);
+            color: var(--color-gray);
+        }
+        
+        .emotions-slider-item__title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        
+        .emotions-slider-item__text {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.7;
+        }
+        
+        .emotions-slider-item__btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .emotions-slider-item__btn-icon {
+            flex-shrink: 0;
+            display: block;
+            aspect-ratio: 1;
+            width: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emotions-slider-item__btn-icon::before,
+        .emotions-slider-item__btn-icon::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url("https://bato-web-agency.github.io/bato-shared/img/slider-1/icon-btn-arrow.svg")
+                center center no-repeat;
+            background-size: 100%;
+        }
+        
+        .emotions-slider-item__btn-icon::after {
+            position: absolute;
+            top: 100%;
+            right: 100%;
+        }
+        
+        .emotions-slider__slide:not(.swiper-slide-active) .emotions-slider-item__header,
+        .emotions-slider__slide:not(.swiper-slide-active)
+            .emotions-slider-item__footer {
+            max-height: 0;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            .emotions-slider-item__btn:hover .emotions-slider-item__btn-icon::before,
+            .emotions-slider-item__btn:hover .emotions-slider-item__btn-icon::after {
+                -webkit-animation: btn-arrow-move 0.4s ease forwards;
+                        animation: btn-arrow-move 0.4s ease forwards;
+            }
+        }
+        
+        @media (hover: none) {
+            .emotions-slider-item__btn:active .emotions-slider-item__btn-icon::before,
+            .emotions-slider-item__btn:active .emotions-slider-item__btn-icon::after {
+                -webkit-animation: btn-arrow-move 0.4s ease forwards;
+                        animation: btn-arrow-move 0.4s ease forwards;
+            }
+        }
+        </style>
+        
+          <script>
+          window.console = window.console || function(t) {};
+        </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">dinath.me</a>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-lg-flex d-none">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Brands</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Case Studies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Social Links</a>
+                    </li> 
+                </ul>
+            </div>
+            
+            <div class="d-lg-none">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+    
+            <div class="hamburger d-none d-lg-block" onclick="toggleSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="11" viewBox="0 0 32 11" fill="none">
+                    <rect width="32" height="2" rx="1" fill="white"></rect>
+                    <rect y="9" width="20" height="2" rx="1" fill="white"></rect>
+                </svg>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Right Sidebar for Desktop --> 
+    
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <p>Welcome to chamod.me! Connect with me:</p>
+        
+        <div class="social-icons">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-twitter-x-fill"></i></a>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-github-fill"></i></a> 
+        </div>
+    
+        <div class="contact-me">
+            <h3>Contact Me</h3>
+            <div class="contact-info">
+                <p><i class="ri-mail-fill"></i> <a href="mailto:your@email.com">your@email.com</a></p>
+                <p><i class="ri-phone-fill"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="ri-map-pin-fill"></i> Colombo, Sri Lanka</p>
+            </div>
+        </div>
+    
+        
+    </div>
+    
+    
+    <!-- Mobile Menu -->
+    <div class="collapse" id="mobileMenu">
+        <ul class="navbar-nav text-center">
+            <li class="nav-item"><a class="nav-link" href="#">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+            <li class="nav-item">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <section class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center"> 
+                <div class="col-lg-6">
+                    <h1 data-aos="zoom-in-right" data-aos-duration="3000" class="hero-title">I'm a <span class="highlight">Magician</span> with <span class="highlight">Clients</span></h1>
+                    <p data-aos="zoom-in-right" data-aos-duration="3000" class="hero-text">
+                        Every strategy costs you money. But working with a strategist 
+                        who has expertise in businesses, not just ads, can make a difference.
+                    </p>
+                    <a data-aos="fade-up" data-aos-duration="3000" href="#" class="btn btn-primary hero-btn">View More</a> 
+                </div> 
+                <div class="col-lg-6 text-center hero-image-container">
+                    <img src="assets/img/dark-bg-focus.webp" alt="background-line" class="background-line">
+                    <img src="assets/img/hero.png" alt="Profile Image" class="hero-image">
+                </div> 
+            </div>
+        </div>
+    </section> 
+
+    <section class="about-me-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 d-flex align-items-center flex-column">
+                    <h3 id="text-anim" class="highlight">I'm a Professional Digital Marketer</h3> 
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-me-content">
+                        <p data-aos="zoom-in-right" data-aos-duration="3000">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, </p>
+                        <p data-aos="zoom-in-right" data-aos-duration="3000"> and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <img data-aos="fade-up" data-aos-duration="3000" src="https://crowdytheme.com/wp/helo/dancer/wp-content/uploads/sites/9/2023/11/signature.png" alt="signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="brand-section">
+        <div class="container">
+            <h3 data-aos="zoom-in-right" data-aos-duration="3000" class="highlight">I work with this brands</h3> 
+            <div class="logos"> 
+                <div class="logos-slide">
+                 <img src="https://tmb001.vercel.app/images/partners/logo-pointsmaker.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-buyersforpoints.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-dealandrunner.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-buyformeretail.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-buyinggroup.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-embdeals.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-buygetrewards.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-maxoutdeals.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-mysbuyinggroup.png" />
+                  <img src="https://tmb001.vercel.app/images/partners/logo-closeoutnj.png" />
+                </div> 
+              </div>
+        </div>
+</section>
+
+<section class="case-studies-section">
+    <div class="container">
+        <h3 class="highlight">Our Case Studies</h3>  <br>
+
+        <section class="base-template">
+            <div class="wrapper base-template__wrapper">
+                 
+        
+                <div class="base-template__content">
+                    <div class="emotions-slider">
+        
+                        <!-- Slider Navigation -->
+        
+                        <div class="emotions-slider__nav slider-nav">
+                            <div tabindex="0" class="slider-nav__item slider-nav__item_prev">
+                                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 26L2 14L14 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div tabindex="0" class="slider-nav__item slider-nav__item_next">
+                                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 26L14 14L2 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+        
+                        <!-- Slider Content -->
+        
+                        <div class="emotions-slider__slider swiper">
+                            <div class="emotions-slider__wrapper swiper-wrapper">
+        
+                                <!-- Slider: Slide 1 -->
+        
+                                <div class="emotions-slider__slide swiper-slide">
+                                    <div class="emotions-slider__item emotions-slider-item">
+                                        <div class="emotions-slider-item__image">
+                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/slide-1.jpg" alt="Winds of Change" />
+                                        </div>
+        
+                                        <div class="emotions-slider-item__content">
+                                            <div class="emotions-slider-item__header">
+                                                <div class="emotions-slider-item__header-inner">
+                                                    <div class="emotions-slider-item__price">$175</div>
+                                                    <div class="emotions-slider-item__author">
+                                                        <div class="emotions-slider-item__author-image">
+                                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/author-1.jpg" alt="Andrew Kelman" />
+                                                        </div>
+                                                        <div class="emotions-slider-item__author-name">
+                                                            Andrew Kelman
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__info">
+                                                <h2 class="emotions-slider-item__title">
+                                                    Winds of Change
+                                                </h2>
+                                                <div class="emotions-slider-item__text">
+                                                    Gentle pink and blue hues remind us of moments when everything changes for the better.
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__footer">
+                                                <a class="emotions-slider-item__btn" href="/" onclick="event.preventDefault();">
+                                                    <span class="emotions-slider-item__btn-text">View more</span>
+                                                    <span class="emotions-slider-item__btn-icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Slider: Slide 2 -->
+        
+                                <div class="emotions-slider__slide swiper-slide">
+                                    <div class="emotions-slider__item emotions-slider-item">
+                                        <div class="emotions-slider-item__badge">Popular Now</div>
+        
+                                        <div class="emotions-slider-item__image">
+                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/slide-2.jpg" alt="Flames of Passion" />
+                                        </div>
+        
+                                        <div class="emotions-slider-item__content">
+                                            <div class="emotions-slider-item__header">
+                                                <div class="emotions-slider-item__header-inner">
+                                                    <div class="emotions-slider-item__price">$270</div>
+                                                    <div class="emotions-slider-item__author">
+                                                        <div class="emotions-slider-item__author-image">
+                                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/author-2.jpg" alt="Alex Bilyk" />
+                                                        </div>
+                                                        <div class="emotions-slider-item__author-name">
+                                                            Alex Bilyk
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__info">
+                                                <h2 class="emotions-slider-item__title">
+                                                    Flames of Passion
+                                                </h2>
+                                                <div class="emotions-slider-item__text">
+                                                    This piece represents the fire of inspiration burning within us all. Feel the warmth of emotions in a swirl of red and yellow tones.
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__footer">
+                                                <a class="emotions-slider-item__btn" href="/" onclick="event.preventDefault();">
+                                                    <span class="emotions-slider-item__btn-text">View more</span>
+                                                    <span class="emotions-slider-item__btn-icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Slider: Slide 3 -->
+        
+                                <div class="emotions-slider__slide swiper-slide">
+                                    <div class="emotions-slider__item emotions-slider-item">
+                                        <div class="emotions-slider-item__image">
+                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/slide-3.jpg" alt="Oceans of Serenity" />
+                                        </div>
+        
+                                        <div class="emotions-slider-item__content">
+                                            <div class="emotions-slider-item__header">
+                                                <div class="emotions-slider-item__header-inner">
+                                                    <div class="emotions-slider-item__price">$225</div>
+                                                    <div class="emotions-slider-item__author">
+                                                        <div class="emotions-slider-item__author-image">
+                                                            <img src="https://bato-web-agency.github.io/bato-shared/img/slider-1/author-3.jpg" alt="Inna Grande" />
+                                                        </div>
+                                                        <div class="emotions-slider-item__author-name">
+                                                            Inna Grande
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__info">
+                                                <h2 class="emotions-slider-item__title">
+                                                    Oceans of Serenity
+                                                </h2>
+                                                <div class="emotions-slider-item__text">
+                                                    Immerse yourself in the depths of calm and harmony. Blue waves of art take you into a world of meditation and inner balance.
+                                                </div>
+                                            </div>
+        
+                                            <div class="emotions-slider-item__footer">
+                                                <a class="emotions-slider-item__btn" href="/" onclick="event.preventDefault();">
+                                                    <span class="emotions-slider-item__btn-text">View more</span>
+                                                    <span class="emotions-slider-item__btn-icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Slider: Slide 4 -->
+        
+                                  
+                            </div>
+                        </div>
+        
+                        <!-- Slider Pagination -->
+        
+                        <div class="emotions-slider__pagination slider-pagination"></div>
+        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-10 col-md-6 col-lg-10 left-section">
+                <div class="contact-info">
+                    <div class="name">Lorem Ipsum</div>
+                    <div class="phone">+1 541-414-6442</div>
+                    <div class="email">dinath@gmail.com</div>
+                    <div class="social-media">
+                        
+                        <a href="#" class="social-icon">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 col-md-6 col-lg-2 right-section">
+                <div class="website">dinath.me</div>
+            </div>
+        </div> 
+    </div> 
+</section>
+
+<!-- Scripts --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> 
+<script src="js/theme.js"></script>
+
+      <script id="rendered-js" >
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll(".emotions-slider");
+
+  if (!sliders.length) return;
+
+  const list = [];
+
+  sliders.forEach(element => {
+    const [slider, prevEl, nextEl, pagination] = [
+    element.querySelector(".swiper"),
+    element.querySelector(".slider-nav__item_prev"),
+    element.querySelector(".slider-nav__item_next"),
+    element.querySelector(".slider-pagination")];
+
+
+    list.push(
+    new Swiper(slider, {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      speed: 600,
+      observer: true,
+      watchOverflow: true,
+      watchSlidesProgress: true,
+      centeredSlides: true,
+      initialSlide: 1,
+      navigation: { nextEl, prevEl, disabledClass: "disabled" },
+      pagination: {
+        el: pagination,
+        type: "bullets",
+        modifierClass: "slider-pagination",
+        bulletClass: "slider-pagination__item",
+        bulletActiveClass: "active",
+        clickable: true },
+
+      breakpoints: {
+        768: { spaceBetween: 40 } } }));
+
+
+
+  });
+});
+//# sourceURL=pen.js
+    </script>
+
+ 
+</body>
+</html>
