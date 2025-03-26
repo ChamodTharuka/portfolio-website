@@ -1,0 +1,280 @@
+@use "media-breakpoints" as *; 
+
+$primary-color: #ffcc00;
+$background-color:#fff;
+$text-color: #000;
+$secondary-text: #bbb;
+$button-bg: #6f42c1;
+$button-hover: #5936a8;
+
+/* Navbar Styling */
+.navbar {  
+    padding: 0.5rem 4rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    //background-color: rgba($background-color, 0.95); // Adding background with opacity
+    background-color: transparent; 
+    transition: all 0.3s ease;
+
+    &.scrolled {
+        padding: 1rem 4rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background-color: rgba($background-color, 0.98);
+    }
+
+    .hamburger {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+   
+    @include media-breakpoint-down(md) {
+        padding: 1.5rem 1rem;
+        
+        &.scrolled {
+            padding: 1rem;
+        }
+    }
+
+    .navbar-brand {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $text-color;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+            color: $primary-color;
+        }
+        
+        @include media-breakpoint-down(lg) {
+            font-size: 2rem;
+        }
+        
+        @include media-breakpoint-down(md) {
+            font-size: 1.8rem;
+        }
+    }
+
+    .nav-link { 
+        margin: 0 2rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        position: relative;
+        color: $text-color;
+        transition: color 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: $primary-color; // Using primary color instead of var
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+        
+        @include media-breakpoint-down(xl) {
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    right: -350px; // Slightly wider for better UX
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background-color: rgba($background-color, 0.97); // Using SCSS variable
+    color: $text-color;
+    padding: 80px 30px 30px;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // Smoother animation
+    z-index: 1100; // Higher than navbar
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; // In case content is too tall
+    
+    &.active {
+        right: 0; 
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 32px;
+        background: none;
+        border: none;
+        color: $text-color;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+        
+        &:hover {
+            transform: rotate(90deg);
+            color: $primary-color;
+        }
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: $secondary-text;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+
+        a {
+            color: $text-color;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.2);
+                color: $primary-color;
+            }
+        }
+    }
+
+    /* Contact info stays at the bottom */
+    .contact-me {
+        margin-top: auto;  /* Moves it to the bottom */
+        padding-top: 40px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        
+        h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: $primary-color;
+        }
+
+        .contact-info {
+            p {
+                margin: 15px 0;
+                display: flex;
+                align-items: center;
+                
+                i {
+                    margin-right: 15px;
+                    font-size: 18px;
+                    color: $primary-color;
+                    min-width: 20px;
+                }
+    
+                a {
+                    color: $text-color;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+    
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    
+    @include media-breakpoint-down(sm) {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Mobile Menu */
+#mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($background-color, 0.97); // Using SCSS variable
+    z-index: 999;
+    padding: 70px 20px 20px;
+    overflow-y: auto;
+    
+    .navbar-nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        color: $text-color;
+
+        &:hover {
+            transform: translateY(-3px);
+            color: $primary-color;
+        }
+    }
+    
+    .social-icons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        
+        a {
+            color: $text-color;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            
+            &:hover {
+                color: $primary-color;
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+/* Custom navbar toggler */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+}
+ 

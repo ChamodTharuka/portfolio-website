@@ -1,0 +1,96 @@
+@use "media-breakpoints" as *;
+
+$primary-color: #ffcc00;
+$background-color:#fff;
+$text-color: #000;
+$secondary-text: #bbb;
+$button-bg: #6f42c1;
+$button-hover: #5936a8;
+
+.brand-section {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 30px 0px;
+  position: relative;
+  display: flex;
+  height: 60vh;
+  align-items: center; // Ensures vertical centering
+
+  
+    h3{
+        font-size:45px; 
+        background: linear-gradient(90deg, #005EFF 0%, #FF00F2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;  
+        text-align:center;
+    } 
+ 
+}
+
+ 
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: transparent; // Changed to transparent
+  white-space: nowrap;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+  }
+
+  
+
+  &:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), transparent); // Transparent gradient
+  }
+
+  &:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), transparent); // Transparent gradient
+  }
+
+  &:hover .logos-slide {
+    animation-play-state: paused;
+  }
+
+  .logos-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+
+    img {
+      height: 50px;
+      margin: 0 40px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+      opacity: 0.7;
+    }
+  }
+ 
+    .logos-slide img {
+      height: 50px;
+      padding: 0 30px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+      
+      opacity: 0.7;
+        &:hover {
+        filter: grayscale(0%);
+        opacity: 1;   
+        }
+
+    }
+    
+     
+}
+ 
+    
+  

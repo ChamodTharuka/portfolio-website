@@ -1,0 +1,54 @@
+$primary-color: #ffcc00;
+$background-color: #000;
+$text-color: #fff;
+$secondary-text: #bbb;
+$button-bg: #6f42c1;
+$button-hover: #5936a8;
+
+.hero-section {
+    background-color: $background-color;
+    color: $text-color;
+    padding: 80px 0;
+
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .highlight {
+        color: $primary-color;
+    }
+
+    .hero-text {
+        font-size: 1.1rem;
+        color: $secondary-text;
+        margin: 15px 0;
+    }
+
+    .hero-btn {
+        background-color: $button-bg;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: 0.3s;
+        
+        &:hover {
+            background-color: $button-hover;
+        }
+    }
+
+    .note {
+        font-size: 0.9rem;
+        color: $secondary-text;
+        margin-top: 5px;
+    }
+
+    .hero-image {
+        max-width: 80%;
+        border-radius: 10px;
+        filter: brightness(90%);
+    }
+}

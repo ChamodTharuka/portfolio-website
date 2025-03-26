@@ -1,0 +1,30 @@
+@use "media-breakpoints" as *;
+
+$text-color: #ffcc00;
+$background-color:#fff;
+$text-color: #000;
+$secondary-text: #bbb;
+$button-bg: #6f42c1;
+$button-hover: #5936a8;
+
+.case-studies-section {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 0px 0px 40px 0px;
+  position: relative;
+  display: flex;
+  align-items: center; // Ensures vertical centering
+
+  
+    h3{
+       font-size:45px; 
+        background: linear-gradient(90deg, #005EFF 0%, #FF00F2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;  
+        text-align:center;
+    } 
+
+
+    
+}

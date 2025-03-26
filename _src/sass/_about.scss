@@ -1,0 +1,46 @@
+@use "media-breakpoints" as *;
+
+$primary-color: #ffcc00;
+$background-color:#fff;
+$text-color: #000;
+$secondary-text: #bbb;
+$button-bg: #6f42c1;
+$button-hover: #5936a8;
+
+.about-me-section{
+    background-color: $background-color;
+    color: $text-color;
+    padding: 60px 0px 0px 0px;
+    position: relative; 
+    display: flex;
+    align-items: center; /* Ensures vertical centering */
+
+    h3{
+        font-size:63px;
+        padding:0px 35px;
+        margin-bottom:70px; 
+        max-width: 90%;   
+        color:$text-color;
+    }
+
+ 
+    
+    h3 div {
+        display:inline-block;
+    }
+    
+    .col-lg-6 {
+        display: flex;
+        align-items: center; /* Vertically centers the content */
+        height: 100%; /* Ensure it takes full height */
+
+        img{
+            padding:30px 0px 0px 0px;
+        }
+
+        p{
+            font-family: 'Poppins', serif;
+        }
+    }
+
+}
