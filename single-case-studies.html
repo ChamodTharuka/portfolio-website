@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <title>chamo.me - Portfolio</title>  
+    <link rel="stylesheet" href="css/theme.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"> 
+
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css'>
+     
+</head>
+<body class="bg-white text-black">
+
+	<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">dinath.me</a>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-lg-flex d-none">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-me">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#brands">Brands</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
+                    </li> 
+                </ul>
+            </div>
+            
+            <div class="d-lg-none">
+                <button  id="hamburgerBtn"  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" onclick="toggleMobileMenu()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <button id="closeBtn" class="close-menu d-none" onclick="toggleMobileMenu()">
+                    &times;
+                </button>
+            </div>
+    
+            <div class="hamburger d-none d-lg-block" onclick="toggleSidebar()">
+                <img src="assets/img/menu.png" alt="">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Right Sidebar for Desktop --> 
+    
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <p>Welcome to chamod.me! Connect with me:</p>
+        
+        <div class="social-icons">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-twitter-x-fill"></i></a>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-github-fill"></i></a> 
+        </div>
+    
+        <div class="contact-me">
+            <h3>Contact Me</h3>
+            <!-- Contact info always at the bottom -->
+        <div class="contact-info">
+            <p><i class="ri-mail-fill"></i> <a href="mailto:your@email.com">your@email.com</a></p>
+            <p><i class="ri-phone-fill"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+            <p><i class="ri-map-pin-fill"></i> Colombo, Sri Lanka</p>
+        </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="collapse" id="mobileMenu">
+        <ul class="navbar-nav text-center">
+            <li class="nav-item"><a class="nav-link" href="#about-me">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="#brands">Brands</a></li>
+            <li class="nav-item"><a class="nav-link" href="#case-studies">Case Studies</a></li>
+            <li class="nav-item">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div> 
+     
+
+	<section class="single-case-study-section">	
+		<div class="container">
+            <div class="thumbnail-caraousel single-case-study-section">
+                <div class="swiper-container-wrapper">
+                    <div class="swiper-container gallery-top">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/UWMzKXsY9A4" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="swiper-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/rw4WSR0s8tQ" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="swiper-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/E_srZBfIOiU" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="swiper-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/bKQwQeGxk7Y" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://magicmangogroup.com/wp-content/uploads/2022/06/RideMyWave-1024x511.jpg" alt="Video 1 Thumbnail">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://magicmangogroup.com/wp-content/uploads/2022/06/Keells-We-are-fresh-because-of-you-1024x511.png" alt="Video 2 Thumbnail">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://magicmangogroup.com/wp-content/uploads/2022/06/Keells-Food-1024x511.jpg" alt="Video 3 Thumbnail">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://magicmangogroup.com/wp-content/uploads/2022/06/Softlogic-Deesign-Pattern-1024x511.jpg" alt="Video 4 Thumbnail" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+            <div class="case-study-content">
+                <h4>Ride My Wave</h4>
+                <p>As Red Bull brought its global surfing competition to the shores of Sri Lanka, we decided it was time to bring a little local flavour to this global competition.
+
+                    Using design that was hand drawn in house to bring out the intricacies of Sri Lankan island living, working seamlessly with the action and adventure of surfing.</p>
+
+                <div class="social-media">
+                    <p>Thanks for Participating</p>
+                    <ul>
+                        <li>
+                            <a href="">Dinath Gamage  - <img src="assets/img/linkedin.png" alt=""></a> 
+                        </li>
+                        <li>
+                            <a href="">Yasara Perera - <img src="assets/img/linkedin.png" alt=""> </a> 
+                        </li>
+                        <li>
+                            <a href="">Chamod Tharuka - <img src="assets/img/linkedin.png" alt=""> </a>
+                        </li>
+                        <li>
+                            <a href="">John Wick -<img src="assets/img/linkedin.png" alt=""></a> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+	</section>
+ 
+	<section class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-10 col-md-6 col-lg-10 left-section">
+					<div class="contact-info">
+						<div class="phone">+94 77 339 996 2</div>
+						<div class="email">dinath@gmail.com</div>
+						<div class="social-media">
+							
+							<a href="#" class="social-icon">
+								<i class="ri-facebook-fill"></i>
+							</a>
+							<a href="#" class="social-icon">
+								<i class="ri-twitter-x-fill"></i>
+							</a>
+							<a href="#" class="social-icon">
+								<i class="ri-linkedin-fill"></i>
+							</a>
+							<a href="#" class="social-icon">
+								<i class="ri-github-fill"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-10 col-md-6 col-lg-2 right-section">
+					<div class="website">dinath.me</div>
+				</div>
+			</div> 
+		</div> 
+	</section>
+
+<!-- Scripts --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> 
+<script src="js/theme.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js'></script>
+<script>
+    $(function () {
+        function initializeSwiper() {
+            var galleryThumbs, galleryTop;
+
+            // Mobile configuration
+            if (window.innerWidth <= 768) {
+                galleryThumbs = new Swiper(".gallery-thumbs", {
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                    freeMode: true
+                });
+
+                galleryTop = new Swiper(".gallery-top", {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    thumbs: {
+                        swiper: galleryThumbs
+                    }
+                });
+            } 
+            // Desktop configuration
+            else {
+                galleryThumbs = new Swiper(".gallery-thumbs", {
+                    direction: "vertical",
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                    watchSlidesVisibility: true,
+                    watchSlidesProgress: true
+                });
+
+                galleryTop = new Swiper(".gallery-top", {
+                    spaceBetween: 10,
+                    thumbs: {
+                        swiper: galleryThumbs
+                    }
+                });
+            }
+
+            // Thumbnail click handling
+            $(".gallery-thumbs .swiper-slide").on("click", function() {
+                var index = $(this).index();
+                galleryTop.slideTo(index);
+            });
+        }
+
+        // Initialize on load
+        initializeSwiper();
+
+        // Reinitialize on resize
+        $(window).on('resize', function() {
+            $('.gallery-thumbs, .gallery-top').each(function() {
+                if (this.swiper) this.swiper.destroy();
+            });
+            initializeSwiper();
+        });
+    });
+</script>
+</body>
+</html>

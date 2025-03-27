@@ -19,23 +19,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto d-lg-flex d-none">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Me</a>
+                        <a class="nav-link" href="#about-me">About Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Brands</a>
+                        <a class="nav-link" href="#brands">Brands</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Case Studies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Social Links</a>
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
                     </li> 
                 </ul>
             </div>
             
             <div class="d-lg-none">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                <button  id="hamburgerBtn"  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" onclick="toggleMobileMenu()">
                     <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <button id="closeBtn" class="close-menu d-none" onclick="toggleMobileMenu()">
+                    &times;
                 </button>
             </div>
     
@@ -67,19 +68,14 @@
             <p><i class="ri-map-pin-fill"></i> Colombo, Sri Lanka</p>
         </div>
         </div>
-    
-        
     </div>
-    
     
     <!-- Mobile Menu -->
     <div class="collapse" id="mobileMenu">
         <ul class="navbar-nav text-center">
-            <li class="nav-item"><a class="nav-link" href="#">About Me</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Experience</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about-me">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="#brands">Brands</a></li>
+            <li class="nav-item"><a class="nav-link" href="#case-studies">Case Studies</a></li>
             <li class="nav-item">
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook"></i></a>
@@ -120,7 +116,7 @@
         </div>    
     </section>
 
-    <section class="about-me-section">
+    <section class="about-me-section" id="about-me">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 d-flex align-items-center flex-column left-section">
@@ -138,7 +134,7 @@
         </div>
     </section>
 
-    <section class="brand-section">
+    <section class="brand-section" id="brands">
         <div class="container">
             <div class="logos">
                 <div class="logo_items">
@@ -152,7 +148,6 @@
                     <img src="https://tmb001.vercel.app/images/partners/logo-maxoutdeals.png" />
                     <img src="https://tmb001.vercel.app/images/partners/logo-mysbuyinggroup.png" />
                     <img src="https://tmb001.vercel.app/images/partners/logo-closeoutnj.png" />
-                
                 </div>
                 <div class="logo_items">
                     <img src="https://tmb001.vercel.app/images/partners/logo-pointsmaker.png" />
@@ -171,7 +166,7 @@
         </div>
     </section>
     
-    <section class="case-studies-section">
+    <section class="case-studies-section" id="case-studies">
         <main>
             <div> 
               <h3>My Case Studies</h3>
@@ -185,7 +180,7 @@
                   <div>
                     <h2>Jellyfish</h2>
                     <p>Jellyfish and sea jellies are the informal common names given to the medusa-phase of certain gelatinous members of the subphylum Medusozoa, a major part of the phylum Cnidaria.</p>
-                    <a href="https://en.wikipedia.org/wiki/Jellyfish" target="_blank">explore</a>
+                    <a href="single-case-studies.html" target="_blank">explore</a>
                   </div>
                 </div>
                 <div class="swiper-slide swiper-slide--two">
@@ -194,7 +189,7 @@
                     <p>
                       Experience the magic of a Florida sunset like never before on our daily Sunset Cruise. Departing from St. Petersburg, this 90-minute excursion offers the perfect vantage point to witness the breathtaking hues of the setting sun reflecting off the tranquil waters. Join us aboard to find that sweet spot where sky meets sea in a spectacular display of color and light.
                     </p>
-                    <a href="https://cdn.prod.website-files.com/67646bc27cd171f4f4446754/67648015fb1098364eaba017_dolpins-950x650-salty-pelican-banners-021.jpg" target="_blank">explore</a>
+                    <a href="single-case-studies.html" target="_blank">explore</a>
                   </div>
                 </div>
           
@@ -205,7 +200,7 @@
                     <p>
                       Octopuses inhabit various regions of the ocean, including coral reefs, pelagic waters, and the seabed; some live in the intertidal zone and others at abyssal depths. Most species grow quickly, mature early, and are short-lived.
                     </p>
-                    <a href="https://en.wikipedia.org/wiki/Octopus" target="_blank">explore</a>
+                    <a href="single-case-studies.html" target="_blank">explore</a>
                   </div>
                 </div>
           
@@ -216,7 +211,7 @@
                     <p>
                       Sharks are a group of elasmobranch fish characterized by a cartilaginous skeleton, five to seven gill slits on the sides of the head, and pectoral fins that are not fused to the head.
                     </p>
-                    <a href="https://en.wikipedia.org/wiki/Shark" target="_blank">explore</a>
+                    <a href="single-case-studies.html" target="_blank">explore</a>
                   </div>
                 </div>
           
@@ -227,7 +222,7 @@
                     <p>
                       Dolphins are widespread. Most species prefer the warm waters of the tropic zones, but some, such as the right whale dolphin, prefer colder climates. Dolphins feed largely on fish and squid, but a few, such as the orca, feed on large mammals such as seals.
                     </p>
-                    <a href="https://en.wikipedia.org/wiki/Dolphin" target="_blank">explore</a>
+                    <a href="single-case-studies.html" target="_blank">explore</a>
                   </div>
                 </div>
               </div>

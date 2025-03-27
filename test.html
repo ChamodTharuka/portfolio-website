@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+  <title>Swiper - Vertical Thumbnails / Horizontal Thumbnails - Responsive </title>
+
+    <link rel="canonical" href="https://codepen.io/rogerkuik/pen/abZOLXr">
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css'>
+  
+<style>
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #000;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  overflow: hidden;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 480px) {
+  .swiper-container {
+    min-height: 320px;
+  }
+}
+.swiper-container-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  width: 100vw;
+}
+@media (min-width: 480px) {
+  .swiper-container-wrapper {
+    flex-flow: row nowrap;
+  }
+}
+
+.swiper-button-next, .swiper-button-prev {
+  color: #000;
+}
+
+.swiper-slide {
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-color: #fff;
+  /* Center slide text vertically */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  /* Slide content */
+}
+.swiper-slide .description,
+.swiper-slide .title {
+  display: block;
+  opacity: 0;
+  transition: 0.5s ease 0.5s;
+}
+.swiper-slide-active .description,
+.swiper-slide-active .title {
+  opacity: 1;
+}
+.swiper-slide-active .title {
+  margin-bottom: 0.5rem;
+  font-size: 24px;
+  color: #000;
+  transition: opacity 0.5s ease 0.5s;
+}
+.swiper-slide-active .description {
+  font-size: 16px;
+  color: #777;
+  transition: opacity 0.5s ease 0.75s;
+}
+
+.gallery-top {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+}
+@media (min-width: 480px) {
+  .gallery-top {
+    width: 80%;
+    height: 100vh;
+    margin-right: 10px;
+  }
+}
+
+.gallery-thumbs {
+  width: 100%;
+  height: 25vh;
+  padding-top: 10px;
+}
+@media (min-width: 480px) {
+  .gallery-thumbs {
+    width: 20%;
+    height: 100vh;
+    padding: 0;
+  }
+}
+.gallery-thumbs .swiper-wrapper {
+  flex-direction: row;
+}
+@media (min-width: 480px) {
+  .gallery-thumbs .swiper-wrapper {
+    flex-direction: column;
+  }
+}
+.gallery-thumbs .swiper-slide {
+  width: 25%;
+  flex-flow: row nowrap;
+  height: 100%;
+  opacity: 0.75;
+  cursor: pointer;
+}
+@media (min-width: 480px) {
+  .gallery-thumbs .swiper-slide {
+    flex-flow: column nowrap;
+    width: 100%;
+  }
+}
+.gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+</style>
+
+  
+  
+  
+</head>
+
+<body translate="no">
+  <!-- Slider main wrapper -->
+<div class="swiper-container-wrapper">
+  <!-- Slider main container -->
+  <div class="swiper-container gallery-top">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="title">Responsive vertical thumbnail gallery</div>
+        <div class="description">Scale screen to see effect</div>
+      </div>
+      <div class="swiper-slide">
+        <div class="title">Slide 2</div>
+        <div class="description">Lorem ipsum dolor sit amet</div>
+      </div>
+      <div class="swiper-slide">
+        <div class="title">Slide 3</div>
+        <div class="description">Lorem ipsum dolor sit amet</div>
+      </div>
+      <div class="swiper-slide">
+        <div class="title">Slide 4</div>
+        <div class="description">Lorem ipsum dolor sit amet</div>
+      </div>
+      <div class="swiper-slide">
+        <div class="title">Slide 5</div>
+        <div class="description">Lorem ipsum dolor sit amet</div>
+      </div>
+      <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1675789652617-d84e3d201ef4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80');">
+        <div class="title">Slide 6</div>
+        <div class="description">Lorem ipsum dolor sit amet</div>
+      </div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <!-- Slider thumbnail container -->
+  <div class="swiper-container gallery-thumbs">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1669327195331-cd47e0d5eef0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=100');"></div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1675789652617-d84e3d201ef4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80');"></div>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+      <script id="rendered-js" >
+$(function () {
+  var galleryThumbs = new Swiper(".gallery-thumbs", {
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    direction: "horizontal",
+    spaceBetween: 10,
+    slidesPerView: 3,
+    freeMode: false,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    watchOverflow: true,
+    breakpoints: {
+      480: {
+        direction: "vertical",
+        slidesPerView: 3 } } });
+
+
+
+  var galleryTop = new Swiper(".gallery-top", {
+    direction: "horizontal",
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev" },
+
+    a11y: {
+      prevSlideMessage: "Previous slide",
+      nextSlideMessage: "Next slide" },
+
+    keyboard: {
+      enabled: true },
+
+    thumbs: {
+      swiper: galleryThumbs } });
+
+
+  galleryTop.on("slideChangeTransitionStart", function () {
+    galleryThumbs.slideTo(galleryTop.activeIndex);
+  });
+  galleryThumbs.on("transitionStart", function () {
+    galleryTop.slideTo(galleryThumbs.activeIndex);
+  });
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+</body>
+
+</html>
